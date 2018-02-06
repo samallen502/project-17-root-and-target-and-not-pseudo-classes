@@ -1,0 +1,39 @@
+/*This is a :root type selector. In html, <html> is the root, the topmost element in the document, so doing this targets html and changes the whole page background to grey. Why not just use html as the target? Guil says :root has more specificity...? */
+:root {
+    background: #e3effb;
+}
+
+/*This is a :target type selector. Target selects the element when the element is a target of a link. In HTML, there are IDs associated with Columns A, B, & C. If you were to preview index.html and click Column A, you'd see the URL update to end with something like #ColA as the anchor. This rule below, if you do what I just described, will bring emphasis to Column A after the Column A button gets clicked! */
+:target {
+    background: #384047;
+    color: white;
+}
+
+/* This is the :target Pseudo-class, just applied to #col-c in particular, adding a bunch of sexiness. */
+#col-c:target {
+    background: #eff1f2;
+    color: initial;
+    box-shadow: 0 0 6px rgba(0,0,0, .2);
+}
+
+/* You can even use the :target Pseudo-class to add cool animation sequences, using only HTML and CSS, no JavaScripts:
+
+https://codepen.io/Guilh/pen/QwvxOp
+
+*/
+
+/* This is a negation pseudo-class. It says, "Target all the divs on the page EXCEPT for Column A."
+div:not(#col-a) { <-- WTM: Apply this to every div EXCEPT #col-a.
+    border: solid 1px red;
+} */
+
+/* What if you wanted to target elements on the page that do not have a "submit" button, like Column C has? Here's how using a not selector.*/
+input:not([type="submit"]) {
+   box-shadow: inset 0 2px 0 rgba(0,0,0, .15); /*This gives the name and e-mail input areas a nice "chiseled in" look but doesn't make the "sign up" button appears that way. Easy code to drop, too, for big results. */
+}
+
+/* Another use of the not selector. It targets all columns and nav buttons EXCEPT the first child. Why? The first child is leftmost and you want the leftmost stuff hugging the side of the page while still giving other elements some space. */
+.col:not(:first-child),
+nav a:not(:first-child) {
+    margin-left: 15px; /* This will keep Col A aligned with the left margin of the page but give Col B & C some space from whichever column is to the left. Same with nav buttons, too. */
+}
